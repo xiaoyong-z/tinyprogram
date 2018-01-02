@@ -1,1 +1,3 @@
-# tinyprogram
+# tiny program
+1. RETRO SNACK
+2. STUDENT'S MANAGEMENT PROGRAME
