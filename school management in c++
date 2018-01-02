@@ -1,0 +1,728 @@
+/**PROJECT : SCHOOL MANAGEMENT PROGRAMME IN C++*******************************************************************************************************/
+/**AUTHOR : SEAN ************************************************************************************************************************************/
+/**DATA : 17-12-31 **********************************************************************************************************************************/
+/**ENVIRONMENT : CLION ******************************************************************************************************************************/
+
+#include <iostream>
+#include <string>
+#include <unistd.h>
+#include <ncurses.h>
+#include <stdio.h>
+#include <iomanip>
+
+#define nullptr NULL
+#define MOVETO(x, y) printf("\033[%d;%dH",(x),(y))
+
+const int class_number = 5;
+using namespace std;
+
+/*************************************************************************************************************************************************/
+/***********************************************************CLASS********************************************************************************/
+/*************************************************************************************************************************************************/
+
+struct student {
+    string name;
+    string id;
+    int cid;
+    int chinese;
+    int math;
+    int total_points;
+    student *left;
+    student *right;
+    student *father;
+};
+
+struct cla {
+    int chinese_fail;
+    int math_fail;
+    int cid;
+    int size;
+    int total_points;
+};
+
+class record {
+    friend void display_mode_1(student *stu);
+
+private:
+    student *root;
+    int size;
+    int total_fail;
+    int total_points;
+    cla clas[class_number];
+
+public:
+    record();
+
+    ~record();
+
+    void init();
+
+    void insert();
+
+    void stat(student *);
+
+    void remove();
+
+    void search();
+
+private:
+    void menu();
+
+    student *search(int scores, student *father);
+
+    student *search(string id);
+
+    void display(student *node);
+
+    void removeAt(student *node);
+
+    student *succ(student *node);
+};
+
+
+
+/*************************************************************************************************************************************************/
+/************************************************** constructor && destructor***********************************************************************/
+/*************************************************************************************************************************************************/
+record r;
+void delet(student *stu)
+{
+    if (stu -> left)
+        delet(stu -> left);
+    if (stu -> right)
+        delet(stu -> right);
+    student *temp = stu -> father;
+    if (temp->total_points >= stu -> total_points)
+    {
+        temp -> left = nullptr;
+        delete stu;
+    }
+    else
+    {
+        temp -> right = nullptr;
+        delete stu;
+    }
+}
+record::~record() {
+    delet(r.root);
+}
+record::record() {
+    size = 0;
+    total_fail = 0;
+    root = nullptr;
+    for (int i = 1; i < 5; i++) {
+        clas[i].cid = i;
+        clas[i].total_points = 0;
+        clas[i].size = 0;
+        clas[i].math_fail = 0;
+        clas[i].chinese_fail = 0;
+    }
+}
+
+
+
+/*************************************************************************************************************************************************/
+/************************************************** GLOBAL VARIABLE*******************************************************************************/
+/*************************************************************************************************************************************************/
+student *father;
+student *current;
+int rk;
+int display;
+int display_mode;
+int display2;
+int display3;
+int line;
+int flag;
+
+
+
+
+
+
+/*************************************************************************************************************************************************/
+/************************************************** AUXILIARY FUNCTION*******************************************************************************/
+/*************************************************************************************************************************************************/
+student *record::succ(student *node) {
+    student *s = node;
+    if (s->right) {
+        s = s->right;
+        while (s->left) s = s->left;
+    } else {
+        while (s == (s->father->right)) s = s->father;
+        s = s->father;
+    }
+    return s;
+}
+
+static bool judge_rt(student *node);
+
+void record::removeAt(student *node) {
+    if (father) {
+        if (!node->left && !node->right) {
+            if (judge_rt(node))
+                father->right = nullptr;
+            else
+                father->left = nullptr;
+            delete node;
+        } else if (!node->left) {
+            if (judge_rt(node))
+                father->right = node->right;
+            else
+                father->left = node->right;
+            node->right->father = father;
+            delete node;
+        } else if (!node->right) {
+            if (judge_rt(node))
+                father->right = node->left;
+            else
+                father->left = node->left;
+            node->left->father = father;
+            delete node;
+        } else {
+            student *temp = succ(node);
+            student *temp_father = temp->father;
+            temp = node;
+            node = temp;
+            student *r_son = node->right;
+            delete node;
+            if (r_son) {
+                temp_father->left = r_son;
+                r_son->father = temp_father;
+            }
+        }
+    } else {
+        if (!node->left && !node->right) {
+            delete node;
+            r.root = nullptr;
+        } else if (!node->left) {
+            r.root = node->right;
+            node->right->father = nullptr;
+            delete node;
+        } else if (!node->right) {
+            r.root = node->left;
+            node->left->father = nullptr;
+            delete node;
+        } else {
+            student *temp = root->left;
+            r.root = node->right;
+            r.root->left = temp;
+            temp->father = root;
+            r.root->father = nullptr;
+            delete node;
+        }
+    }
+}
+
+
+void searchIn2(student *stu, string name, student *cur) {
+    if (flag == 1 || !stu) return;
+    ::father = cur;
+    if (stu->name == name) {
+        flag = 1;
+        current = stu;
+        return;
+    }
+    searchIn2(stu->left, name, stu);
+    searchIn2(stu->right, name, stu);
+}
+
+void searchIn(student *stu, string id, student *cur) {
+    if (flag == 1 || !stu) return;
+    ::father = cur;
+    if (stu->id == id) {
+        flag = 1;
+        current = stu;
+        return;
+    }
+    searchIn(stu->left, id, stu);
+    searchIn(stu->right, id, stu);
+}
+
+student *record::search(string id_or_name) {
+    if (r.root == nullptr)
+        return nullptr;
+    ::father = nullptr;
+    current = nullptr;
+    flag = 0;
+    if (isupper(id_or_name[0]))
+        searchIn2(r.root, id_or_name, r.root -> father);
+    else
+        searchIn(r.root, id_or_name, r.root -> father);
+    return current;
+}
+
+student *searchIn(student *stu, int scores, student *father) {
+    if (!stu || stu->total_points == scores) return father;
+    father = stu;
+    return searchIn(((stu->total_points <= scores) ? stu->right : stu->left), scores, father);
+}
+
+student *record::search(int scores, student *father) {
+    return searchIn(r.root, scores, father);
+}
+
+void record::display(student *node) {
+    if (display2 == 0) {
+        MOVETO(5, 0);
+        cout << "RANK\t" << "STU_ID\t\t" << "NAME\t\t" << "CLA_ID\t" << "CHINESE\t" << "MATH\t" << "TOTAL_POINTS\t"
+             << endl;
+    }
+    if (node) {
+        MOVETO(line++, 0);
+        cout << ++rk << "\t";
+        cout << node->id << "\t\t" << node->name << "\t\t" << node->cid << "\t" << node->chinese << "\t";
+        cout << node->math << '\t' << node->total_points << "\t" << endl;
+    }
+}
+
+void display_mode_1(student *x) {
+    if (display3 == 0) {
+        for (int i = 0; i < 5; i++) {
+            MOVETO(i + 5, 4);
+            cout << "                                                                      " << endl;
+        }
+        display3 = 1;
+    }
+    if (!x) return;
+    display_mode_1(x->right);
+    r.display(x);
+    display_mode_1(x->left);
+}
+
+bool judge_rt(student *node);
+
+bool judge_rt(student *node) {
+    return father->total_points < node->total_points;
+}
+
+
+/*************************************************************************************************************************************************/
+/************************************************** MAIN FUNCTION*******************************************************************************/
+/*************************************************************************************************************************************************/
+
+void record::init() {
+    system("clear");
+    cout << "\n\n\n\t\t**************************************************" << endl;
+    cout << "\t\t*****WEICOME TO MY SCHOOL MANAGEMENT PROGRAME*****" << endl;
+    cout << "\t\t**************************************************" << endl;
+    cout << "\n\t\t               Author: Sean                       " << endl;
+    cout << "\n\t\t               Date: 17-12-31                     " << endl;
+    cout << "\n\t\t              PRESS E TO ENTER                    " << endl;
+    while (true) {
+        char ch;
+        cin >> ch;
+        if (ch == 'E' || ch == 'e')
+            break;
+    }
+    r.menu();
+}
+
+void record::menu() {
+    int quit = 0;
+    while (true) {
+        system("clear");
+        rk = 0;
+        cout << "\n\n\t\t**************************************************" << endl;
+        cout << "\t\t*****                MAIN MENU               *****" << endl;
+        cout << "\t\t**************************************************" << endl;
+        cout << "\n\t\t1. INSERT A RECORD." << endl;
+        cout << "\n\t\t2. REMOVE A RECORD " << endl;
+        cout << "\n\t\t3. SEARCH ALL RECORDS " << endl;
+        cout << "\n\t\t4. STATISTICAL DATA  " << endl;
+        cout << "\n\t\t5. QUIT" << endl;
+        cout << "\n\t\tEnter corresponding indexs : ";
+        char ch;
+        cin >> ch;
+        cout << endl;
+        switch (ch) {
+            case '1':
+                r.insert();
+                break;
+            case '2':
+                r.remove();
+                break;
+            case '3':
+                r.search();
+                break;
+            case '4':
+                display2 = 0;
+                display_mode = 0;
+                ::display = 0;
+                display3 = 0;
+                line = 6;
+                r.stat(r.root);
+                break;
+            case '5':
+                quit = 1;
+                break;
+            default:
+                cout << "\n\t\tThe number that you enters should be between 1 and 5. \n\t\t\t\tPLEASE RE-ENTER."
+                     << endl;
+                sleep(2);
+                break;
+        }
+        if (quit == 1)
+            break;
+    }
+}
+
+void record::insert() {
+    while (true) {
+        system("clear");
+        cout << "\t**************************************************" << endl;
+        cout << "\t*****                ADD                     *****" << endl;
+        cout << "\t**************************************************" << endl;
+        auto *stu = new student;
+        do {
+            MOVETO(5, 4);
+            cout << "STUDENT'S ID (5 characters) : ";
+            cin >> stu->id;
+            if (stu->id.length() != 5) {
+                MOVETO(6, 4);
+                cout << "Sorry, the length of the id should be five." << endl;
+                MOVETO(6, 4);
+                sleep(1);
+                cout << "                                           " << endl;
+                MOVETO(5, 34);
+                cout << "                                           " << endl;
+            }
+        } while (stu->id.length() != 5);
+        student *x = r.search(stu->id);
+        if (x != nullptr) {
+            delete stu;
+            cout << "Sorry, there's is already a same record." << endl;
+            sleep(1);
+            continue;
+        }
+        do {
+            MOVETO(6, 4);
+            cout << "STUDENT'S NAME : ";
+            cin >> stu->name;
+            stu -> name[0] = toupper(stu->name[0]);
+            if (stu->name.length() > 10) {
+                MOVETO(7, 4);
+                cout << "Sorry, the max length of name is 10 characters." << endl;
+                MOVETO(7, 4);
+                sleep(1);
+                cout << "                                               ";
+                MOVETO(6, 23);
+                cout << "                                                ";
+            }
+        } while (stu->name.length() > 10);
+
+        do {
+            MOVETO(7, 4);
+            cout << "STUDENT'S MATH SCORE : ";
+            cin >> stu->math;
+            if (stu->math < 0 || stu->math > 100) {
+                MOVETO(8, 4);
+                cout << "Sorry, the scores should be between 0 and 100." << endl;
+                MOVETO(8, 4);
+                sleep(1);
+                cout << "                                               ";
+                MOVETO(7, 28);
+                cout << "                                                ";
+            }
+        } while (stu->math < 0 || stu->math > 100);
+
+        do {
+            MOVETO(8, 4);
+            cout << "STUDENT'S CHINESE SCORE : ";
+            cin >> stu->chinese;
+            if (stu->chinese < 0 || stu->chinese > 100) {
+                MOVETO(9, 4);
+                cout << "Sorry, the scores should be between 0 and 100." << endl;
+                MOVETO(9, 4);
+                sleep(1);
+                cout << "                                               ";
+                MOVETO(8, 31);
+                cout << "                                                ";
+            }
+        } while (stu->chinese < 0 || stu->chinese > 100);
+
+        do {
+            MOVETO(9, 4);
+            cout << "THE STUDENT'S CLASS : ";
+            cin >> stu->cid;
+            if (stu->cid < 1 || stu->cid > 4) {
+                MOVETO(10, 4);
+                cout << "Sorry, we have only four classes. So the class number should be a integer between 1 and 4."
+                     << endl;
+                MOVETO(10, 4);
+                sleep(2);
+                cout << "                                                                                           "
+                     << endl;
+                MOVETO(9, 26);
+                cout << "                               ";
+            }
+        } while (stu->cid < 1 || stu->cid > 4);
+        stu->total_points = stu->math + stu->chinese;
+        MOVETO(10, 4);
+        stu->left = nullptr;
+        stu->right = nullptr;
+        cout << "THE STUDENT'S TOTAL_POINTS : " << stu->total_points << endl;
+        auto *father = r.search(stu->total_points, nullptr);;
+        if (r.root == nullptr) {
+            r.root = stu;
+            r.root->father = nullptr;
+        } else {
+            if (father == nullptr) {
+                father = r.root;
+            }
+            if (father->total_points > stu->total_points) {
+                father->left = stu;
+                stu->father = father;
+            } else {
+                father->right = stu;
+                stu->father = father;
+            }
+        }
+
+        r.total_points += stu->total_points;
+        if (stu->chinese < 60)
+            r.total_fail++;
+        if (stu->math < 60)
+            r.total_fail++;
+        r.size++;
+
+        if (stu->chinese < 60)
+            clas[stu->cid].chinese_fail++;
+        if (stu->math < 60)
+            clas[stu->cid].math_fail++;
+        clas[stu->cid].total_points += stu->total_points;
+        clas[stu->cid].size++;
+        MOVETO(11, 4);
+        char ch;
+        cout << "Enter c to continue : ";
+        cin >> ch;
+        if (ch != 'c')
+            break;
+    }
+}
+
+void record::stat(student *x) {
+    system("clear");
+    char ch = '0';
+    if (::display == 0) {
+        cout << "\t\t**************************************************" << endl;
+        cout << "\t\t*****                STATISTICS              *****" << endl;
+        cout << "\t\t**************************************************" << endl;
+        ::display = 1;
+    }
+    if (display_mode == 0) {
+        do {
+            if (root == nullptr) {
+                cout << "Sorry, wo have no student's records" << endl;
+                sleep(1);
+                break;
+            }
+            MOVETO(5, 4);
+            cout << "\t1. STUDENTS GRADES STATISTICS" << endl;
+            cout << "\t2. CLASS GRADES STATISTICS" << endl;
+            cout << "\t3. TOTOL GRADES STATISTICS" << endl;
+            cout << "\tEnter your choice (1 or 2 or 3): ";
+            cin >> ch;
+            cout << endl;
+            if (ch != '1' && ch != '2' && ch != '3') {
+                MOVETO(9, 4);
+                cout << "\tSorry, you have only three choices" << endl;
+                sleep(2);
+                MOVETO(9, 4);
+                cout << "                                          " << endl;
+                MOVETO(8, 38);
+                cout << "     ";
+            }
+        } while (ch != '1' && ch != '2' && ch != '3');
+        display_mode = static_cast<int> (ch - '0');
+    }
+    if (display_mode == 1) {
+        display_mode_1(x);
+    } else if (display_mode == 2) {
+        for (int i = 0; i < 5; i++) {
+            MOVETO(i + 5, 4);
+            cout << "                                                                      " << endl;
+        }
+        display3 = 1;
+        MOVETO(5, 0);
+        cout << "CLASS_ID\t" << "STUDENTS\t" << "AVARAGES_POINTS\t" << "CHINESE_FAIL_RATE\t" << "MATH_FAIL_RATE\t"
+             << endl;
+        for (int i = 1; i < 5; i++) {
+            cout << i << "\t\t\t" << r.clas[i].size << "\t\t" << fixed << setprecision(2) \
+ << (double) r.clas[i].total_points / r.clas[i].size << "\t\t\t";
+            cout << (double) r.clas[i].chinese_fail / r.clas[i].size * 100 << "%" << "\t\t\t" << \
+                    (double) r.clas[i].math_fail / r.clas[i].size * 100 << "%" << endl;
+        }
+    } else if (display_mode == 3) {
+        for (int i = 0; i < 5; i++) {
+            MOVETO(i + 5, 4);
+            cout << "                                                                      " << endl;
+        }
+        display3 = 1;
+        MOVETO(5, 4);
+        cout << "TOTAL_STUDENTS\t" << "AVERAGES_POINTS\t" << "FAIL_RATE" << "\t" << endl;
+        cout << "\t" << r.size << "\t\t" << fixed << setprecision(2) << (double) r.total_points / r.size / 2\
+ << "\t\t" << (double) r.total_fail / size * 100 / 2 << "%" << endl;
+    }
+    sleep(4);
+}
+
+void record::remove() {
+    LABEL :
+    system("clear");
+    char ch = '0';
+    cout << "\t**************************************************" << endl;
+    cout << "\t*****                REMOVE                  *****" << endl;
+    cout << "\t**************************************************" << endl;
+    auto *stu = new student;
+    do {
+        MOVETO(5, 4);
+        if (root == nullptr) {
+            cout << "Sorry, wo have no student's records" << endl;
+            sleep(1);
+            break;
+        }
+        cout << "\t1. You want to delete the students' records by the name." << endl;
+        cout << "\t2. You only want to delete the specific student's record by the id" << endl;
+        cout << "\t3. You want to see the students information first" << endl;
+        cout << "\tEnter your choice (1 or 2 or 3): ";
+        cin >> ch;
+        cout << endl;
+        if (ch != '1' && ch != '2' && ch != '3') {
+            MOVETO(9, 4);
+            cout << "\tSorry, you have only three choices" << endl;
+            sleep(2);
+            MOVETO(9, 4);
+            cout << "                                          " << endl;
+            MOVETO(8, 38);
+            cout << "     ";
+        }
+    } while (ch != '1' && ch != '2' && ch != '3');
+    if (ch == '2') {
+        while (true) {
+            string id;
+            do {
+                for (int i = 0; i < 5; i++) {
+                    MOVETO(i + 5, 4);
+                    cout << "                                                                      " << endl;
+                }
+                MOVETO(5, 4);
+                cout << "STUDENT'S ID (q to exit) : ";
+                cin >> id;
+                cout << endl;
+                if (id[0] == 'q' && id.length() == 1)
+                    break;
+                if (id.length() != 5) {
+                    MOVETO(6, 4);
+                    cout << "Sorry, the length of the id should be five." << endl;
+                    MOVETO(6, 4);
+                    sleep(1);
+                    cout << "                                           " << endl;
+                    MOVETO(5, 32);
+                    cout << "                                           " << endl;
+                }
+            } while (stu->id.length());
+            string q = "q";
+            if (id[0] == 'q' && id.length() == 1)
+                break;
+            stu->id = id;
+            student *x = search(stu->id);
+            if (x == nullptr) {
+                MOVETO(6, 4);
+                cout << "Sorry, there's no such a student." << endl;
+                sleep(2);
+                MOVETO(6, 4);
+                cout << "                                    " << endl;
+                MOVETO(5, 32);
+                cout << "                                    " << endl;
+            } else {
+                removeAt(x);
+            }
+        }
+    } else if (ch == '1') {
+        while (true) {
+            string name;
+            for (int i = 0; i < 5; i++) {
+                MOVETO(i + 5, 4);
+                cout << "                                                                      " << endl;
+            }
+            do {
+                MOVETO(5, 4);
+                cout << "STUDENT'S NAME (q to exit) : ";
+                cin >> name;
+                if (name[0] == 'q' && name.length() == 1)
+                    break;
+                name[0] = toupper(name[0]);
+                if (name.length() > 10) {
+                    MOVETO(6, 4);
+                    cout << "Sorry, the max length of name is 10 characters." << endl;
+                    MOVETO(6, 4);
+                    sleep(1);
+                    cout << "                                                 ";
+                    MOVETO(5, 34);
+                    cout << "                                                 ";
+                }
+            } while (name.length() > 10);
+            if (name[0] == 'q' && name.length() == 1)
+                break;
+            stu->name = name;
+            int times = 0;
+            student *x = search(stu->name);
+            while (x != nullptr) {
+                ++times;
+                removeAt(x);
+                x = search(stu->name);
+            }
+            if (x == nullptr && times == 0) {
+                MOVETO(6, 4);
+                cout << "Sorry, there's no such a student." << endl;
+                sleep(2);
+                MOVETO(6, 4);
+                cout << "                                    " << endl;
+                MOVETO(5, 34);
+                cout << "                                    " << endl;
+            }
+        }
+    } else if (ch == '3') {
+        line = 6;
+        ::display = 0;
+        display_mode = 1;
+        display2 = 0;
+        display3 = 0;
+        stat(r.root);
+        goto LABEL;
+    }
+};
+
+void record::search() {
+    system("clear");
+    cout << "\t**************************************************" << endl;
+    cout << "\t*****                SEARCH                  *****" << endl;
+    cout << "\t**************************************************" << endl;
+    auto *stu = new student;
+    student *node ;
+    do {
+        MOVETO(5, 4);
+        cout << "Enter the student's id : ";
+        cin >> stu->id;
+        node = search(stu->id);
+        if (node == nullptr) {
+            MOVETO(6, 4);
+            cout << "Sorry, there's no such a student." << endl;
+            sleep(1);
+            MOVETO(6, 4);
+            cout << "                                        " << endl;
+            MOVETO(5, 30);
+            cout << "                                        " << endl;
+        }
+        else
+        {
+            display2 = 0;
+            display(node);
+        }
+    }while (node == nullptr);
+};
+
+int main() {
+    r.init();
+    return 0;
+}
