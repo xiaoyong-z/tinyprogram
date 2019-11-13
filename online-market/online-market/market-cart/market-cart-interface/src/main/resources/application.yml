@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: market-cart-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/market
+    username: root
+    password: 123456789
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10087/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

@@ -1,0 +1,43 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: market-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10087/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+zuul:
+  prefix: /api
+  routes:
+    user-service:
+      path: /user/**
+      serviceId: market-user-service
+      strip-prefix: false
+    item-service:
+      path: /item/**
+      serviceId: market-item-service
+      strip-prefix: false
+    cart-service:
+      path: /cart/**
+      serviceId: market-cart-service
+      strip-prefix: false
+    history-service:
+      path: /history/**
+      serviceId: market-history-service
+      strip-prefix: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillieseconds: 205000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-cart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-cart/market-cart-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-cart/market-cart-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-history" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-history/market-history-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-history/market-history-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-item" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-item/market-item-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-item/market-item-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-registry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-user/market-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/market-user/market-user-service" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="market-gateway" />
+        <module name="market-item-interface" />
+        <module name="market-cart-interface" />
+        <module name="market-user-service" />
+        <module name="market-common" />
+        <module name="market-user-interface" />
+        <module name="market-history-interface" />
+        <module name="market-item" />
+        <module name="market-registry" />
+        <module name="market-cart-service" />
+        <module name="market-history-service" />
+        <module name="market-item-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cart" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cart" options="-parameters" />
+      <module name="market-cart" options="-parameters" />
+      <module name="market-cart-interface" options="-parameters" />
+      <module name="market-cart-service" options="-parameters" />
+      <module name="market-common" options="-parameters" />
+      <module name="market-gateway" options="-parameters" />
+      <module name="market-history" options="-parameters" />
+      <module name="market-history-interface" options="-parameters" />
+      <module name="market-history-service" options="-parameters" />
+      <module name="market-item" options="-parameters" />
+      <module name="market-item-interface" options="-parameters" />
+      <module name="market-item-service" options="-parameters" />
+      <module name="market-registry" options="-parameters" />
+      <module name="market-user" options="-parameters" />
+      <module name="market-user-interface" options="-parameters" />
+      <module name="market-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>
