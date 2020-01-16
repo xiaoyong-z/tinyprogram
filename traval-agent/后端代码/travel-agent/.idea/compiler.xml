@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="agent-identity-service" />
+        <module name="agent-service-interface" />
+        <module name="agent-gateway" />
+        <module name="agent-identity-interface" />
+        <module name="agent-common" />
+        <module name="agent-service-service" />
+        <module name="agent-activity-service" />
+        <module name="agent-activity-interface" />
+        <module name="agent-registry" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="agent-activity" options="-parameters" />
+      <module name="agent-activity-interface" options="-parameters" />
+      <module name="agent-activity-service" options="-parameters" />
+      <module name="agent-common" options="-parameters" />
+      <module name="agent-gateway" options="-parameters" />
+      <module name="agent-identity-interface" options="-parameters" />
+      <module name="agent-identity-service" options="-parameters" />
+      <module name="agent-registry" options="-parameters" />
+      <module name="agent-service" options="-parameters" />
+      <module name="agent-service-interface" options="-parameters" />
+      <module name="agent-service-service" options="-parameters" />
+    </option>
+  </component>
+</project>

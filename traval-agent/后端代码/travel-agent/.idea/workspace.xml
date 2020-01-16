@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1648b570-e573-41a9-a325-232d298f52c6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\Users\tinySean\.m2\repository" />
+        <option name="mavenHome" value="$USER_HOME$/Downloads/apache-maven-3.6.2-bin/apache-maven-3.6.2" />
+        <option name="usePluginRegistry" value="true" />
+        <option name="userSettingsFile" value="C:\Users\tinySean\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1TXboWojY8matC33fTvfKLkfpYX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-admin-spa-master" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.splitter.proportion" value="0.24081981" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tinySean\Desktop\travel-agent\agent-common\src\main\java" />
+      <recent name="C:\Users\tinySean\Desktop\travel-agent" />
+      <recent name="C:\Users\tinySean\Desktop\travel-agent\agent-gateway\src\main\java\com\agent\gateway" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.agent.common" />
+      <recent name="com.agent.identity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tinySean\Desktop\travel-agent" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AgServiceService">
+    <configuration name="AgActivityService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="agent-activity-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.agent.AgActivityService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgGateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="agent-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.agent.gateway.AgGateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgIdentityService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="agent-identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.agent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.agent.AgIdentityService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgRegistry" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="agent-registry" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.agent.registry.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.agent.registry.AgRegistry" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgServiceService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="agent-service-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.agent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.agent.AgServiceService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.AgServiceService" />
+        <item itemvalue="Spring Boot.AgRegistry" />
+        <item itemvalue="Spring Boot.AgIdentityService" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.15095629" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1648b570-e573-41a9-a325-232d298f52c6" name="Default Changelist" comment="" />
+      <created>1573609562960</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573609562960</updated>
+      <workItem from="1573609570654" duration="16000" />
+      <workItem from="1573609637686" duration="583000" />
+      <workItem from="1573730499392" duration="4528000" />
+      <workItem from="1573739199524" duration="355000" />
+      <workItem from="1573801843582" duration="1779000" />
+      <workItem from="1573806225735" duration="68000" />
+      <workItem from="1573833892090" duration="2646000" />
+      <workItem from="1573914210798" duration="5421000" />
+      <workItem from="1573949967593" duration="3839000" />
+      <workItem from="1573957964292" duration="1677000" />
+      <workItem from="1573959660377" duration="2664000" />
+      <workItem from="1573970062257" duration="1948000" />
+      <workItem from="1573972073272" duration="700000" />
+      <workItem from="1573972812117" duration="5089000" />
+      <workItem from="1573978357277" duration="13800000" />
+      <workItem from="1574036463332" duration="5111000" />
+      <workItem from="1574043100623" duration="3078000" />
+      <workItem from="1574227791569" duration="776000" />
+      <workItem from="1574229777632" duration="19228000" />
+      <workItem from="1574295682174" duration="3685000" />
+      <workItem from="1574315644334" duration="8820000" />
+      <workItem from="1574334626972" duration="3228000" />
+      <workItem from="1574384389918" duration="2095000" />
+      <workItem from="1574400935257" duration="15043000" />
+      <workItem from="1574432833259" duration="4123000" />
+      <workItem from="1574471514319" duration="7126000" />
+      <workItem from="1574521986784" duration="699000" />
+      <workItem from="1574836243215" duration="9708000" />
+      <workItem from="1574858721235" duration="7849000" />
+      <workItem from="1574900377590" duration="2671000" />
+      <workItem from="1574918285630" duration="3523000" />
+      <workItem from="1574931676587" duration="9534000" />
+      <workItem from="1574953257639" duration="174000" />
+      <workItem from="1574988642759" duration="1236000" />
+      <workItem from="1575009807443" duration="3604000" />
+      <workItem from="1575075113166" duration="5463000" />
+      <workItem from="1575264667920" duration="34000" />
+      <workItem from="1576128246135" duration="21000" />
+      <workItem from="1576162918091" duration="473000" />
+      <workItem from="1576216168860" duration="57000" />
+      <workItem from="1576285146785" duration="3645000" />
+      <workItem from="1576373847854" duration="1203000" />
+      <workItem from="1576650615591" duration="5794000" />
+      <workItem from="1576803436698" duration="2996000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1576651186088">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1576651186088" />
+    <state width="1242" height="272" key="GridCell.Tab.0.bottom" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.0.center" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.0.left" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.0.right" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.1.bottom" timestamp="1576803545257">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576803545257" />
+    <state width="1242" height="272" key="GridCell.Tab.1.center" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.1.left" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.1.right" timestamp="1576803545256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1576803545256" />
+    <state width="1242" height="272" key="GridCell.Tab.2.bottom" timestamp="1576659654487">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576659654487" />
+    <state width="1242" height="272" key="GridCell.Tab.2.center" timestamp="1576659654486">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1576659654486" />
+    <state width="1242" height="272" key="GridCell.Tab.2.left" timestamp="1576659654486">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1576659654486" />
+    <state width="1242" height="272" key="GridCell.Tab.2.right" timestamp="1576659654486">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="272" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1576659654486" />
+    <state x="462" y="421" key="com.intellij.ide.util.TipDialog" timestamp="1576650616174">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="462" y="421" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1576650616174" />
+    <state x="178" y="22" key="new project wizard" timestamp="1576651195933">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1576651195933" />
+  </component>
+</project>

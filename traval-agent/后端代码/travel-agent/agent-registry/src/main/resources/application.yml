@@ -1,0 +1,13 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: agent-registry
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:10086/eureka

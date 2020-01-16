@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/agent-activity-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/agent-activity-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/agent-activity-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/agent-activity-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-activity/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/agent-identity-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/agent-identity-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/agent-identity-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/agent-identity-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-identity/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-registry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/agent-service-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/agent-service-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/agent-service-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/agent-service-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
